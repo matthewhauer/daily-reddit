@@ -10,7 +10,7 @@ public class CritFinder
     {
         System.out.println( "Hello World!" );
         try {
-            if(args.length >= 3){
+            if(args.length >= 2){
                 doParameters(args);
             } else {
                 doInteractive();
@@ -25,8 +25,8 @@ public class CritFinder
     }
 
     private static void doParameters(String[] args) throws Exception {
-        int sides = Integer.parseInt(args[1]);
-        int goal = Integer.parseInt(args[2]);
+        int sides = Integer.parseInt(args[0]);
+        int goal = Integer.parseInt(args[1]);
         double r = new CritFinder().findOneShotChance(sides, goal);
     }
 
