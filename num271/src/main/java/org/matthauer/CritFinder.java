@@ -62,7 +62,10 @@ public class CritFinder
         double reroll = 1.0/sides;
         int rerollsNeeded = goal / sides; // fluke of integer arithmatic, result is floor()
         double leftover = goal - (rerollsNeeded * sides);
-
-        return leftover / (double)sides * Math.pow(reroll, rerollsNeeded);
+        if(leftover == 0){
+            return Math.pow(reroll, rerollsNeeded);
+        } else {
+            return (sides - leftover + 1) / (double) sides * Math.pow(reroll, rerollsNeeded);
+        }
     }
 }
