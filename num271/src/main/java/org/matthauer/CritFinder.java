@@ -62,7 +62,7 @@ public class CritFinder
         double reroll = 1.0/sides;
         int rerollsNeeded = goal / sides; // fluke of integer arithmatic, result is floor()
         double leftover = goal - (rerollsNeeded * sides);
-        if(leftover == 0){
+        if(Math.abs(leftover) <= 0.01){ // catch FP rounding errors
             return Math.pow(reroll, rerollsNeeded);
         } else {
             return (sides - leftover + 1) / (double) sides * Math.pow(reroll, rerollsNeeded);
