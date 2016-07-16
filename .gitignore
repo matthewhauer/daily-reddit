@@ -1,8 +1,3 @@
-20160610/.idea/
-20160610/daily-june-11/.idea/compiler.xml
-20160610/daily-june-11/.idea/
 *.iml
-num271/.idea/
-num271/target/
-num275/.idea/
-num275/target/
+**/.idea/
+**/target/
