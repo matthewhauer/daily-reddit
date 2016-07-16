@@ -47,17 +47,20 @@ public class MapData {
             mapData.rawMapData[i] = br.readLine();
         }
         for(String dataLine : mapData.rawMapData) {
-            for (char c : dataLine.toCharArray()) {
-                switch(c){
-                    case '-':
-                        break;
-                    case 'X':
-                        break;
-                    default:
-                        break;
-                }
-            }
+
         }
         return null;
+    }
+
+    public static MapCell[] processRow(String rowData, int size) throws IOException {
+        char data[] = rowData.trim().toCharArray();
+        if(size > data.length){
+            throw new IOException("row length shorter than specified size");
+        }
+        MapCell[] cells = new MapCell[size];
+        for (int i = 0; i < size; ++i) {
+            cells[i] = new MapCell(data[i]);
+        }
+        return cells;
     }
 }
