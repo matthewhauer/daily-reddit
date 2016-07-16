@@ -1,9 +1,20 @@
 package org.matthauer;
 
+import java.util.HashMap;
+
 /**
  * Created by sta7ic on 7/14/2016.
  */
 public class SplurthianChemistry {
+    private static HashMap<String, String> elementMap = new HashMap<String, String>();
+
+    public SplurthianChemistry(){
+        ;
+    }
+    public String addElement(String elementName){
+        String useName = elementName.toLowerCase();
+        return null;
+    }
     /**
      * THE RULES:
      * All chemical symbols must be exactly two letters, so B is not a valid symbol for Boron.
@@ -46,5 +57,34 @@ public class SplurthianChemistry {
         }
 
         return true;
+    }
+
+    // return first valid two-letter symbol that matches the rules, with the 'lowest' letter for each position
+    public String buildAlphaSymbol(String element) throws Exception {
+        String useName = element.toLowerCase();
+        char first, second;
+        // get the first letter
+        first = useName.charAt(0);
+        // get the next UNIQUE letter (so 'r' in aardvark)
+        int i = 1;
+        while(useName.charAt(i) == first && i < useName.length())
+            ++i;
+        second = useName.charAt(i);
+        // ordered correctly?
+        if(first > second){
+            char swap = second;
+            second = first;
+            first = swap;
+        }
+        for(char c : useName.substring(i+1).toCharArray()){
+            char hold = 'Z';
+            if(c < first){
+                second = first;
+                first = c;
+            }
+        }
+        // probably could use a StringBuilder, but need to capture that case convention.
+        return new String(new char[]{first}).toUpperCase().concat(new String(new char[]{second}));
+//        throw new Exception("unable to build symbol for "+element);
     }
 }
